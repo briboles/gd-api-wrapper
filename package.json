@@ -15,5 +15,9 @@
     "server"
   ],
   "author": "Brian Boles brian@brianboles.me",
-  "license": "ISC"
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/briboles/gd-api-wrapper.git"
+  },
+  "license": "MIT"
 }
