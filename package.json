@@ -1,0 +1,19 @@
+{
+  "name": "godaddy-cloud-api-wrapper",
+  "version": "1.0.0",
+  "description": "Wrapper for Godaddy.com's Cloud Server API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "godaddy",
+    "api",
+    "v1",
+    "wrapper",
+    "cloud",
+    "server"
+  ],
+  "author": "Brian Boles brian@brianboles.me",
+  "license": "ISC"
+}
