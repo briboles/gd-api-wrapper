@@ -108,3 +108,5 @@ gdapi.servers.actions({ serverId: 'idstring' }, function (err, data) {
 ### Support or Contact
 
 Pull requests are welcome. Issues can be posted at https://github.com/briboles/gd-api-wrapper/issues.
+
+Design Inspired by https://github.com/pauldenotter/nautical
