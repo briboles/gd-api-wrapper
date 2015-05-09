@@ -14,7 +14,7 @@ Full API docs can be found at https://cloud.godaddy.com/docs. As of writing this
 
 ```Javascript
 
-var CloudAPI = require('./gd-api-wrapper');
+var CloudAPI = require('gd-api-wrapper');
 var config = {
     api_key: 'API_KEY',
     api_secret: 'API_SECRET'
