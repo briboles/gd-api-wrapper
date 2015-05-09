@@ -1,9 +1,6 @@
 # Godaddy Cloud Servers API Wrapper
 This node module wraps Godaddy's v1 Cloud Server API.
 
-### 
-This project wraps the Godaddy Cloud Servers API in an easy to use object.
-
 ## Install
 ```bash
 $ npm install gd-api-wrapper
