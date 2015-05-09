@@ -1,37 +1,25 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Gd-api-wrapper : Node JS module Wrapper for Godaddy&#39;s v1 Cloud Server API.">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Gd-api-wrapper</title>
+    <meta charset="UTF-8">
+    <title>Gd-api-wrapper by briboles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">Gd-api-wrapper</h1>
+      <h2 class="project-tagline">Node JS module Wrapper for Godaddy&#39;s v1 Cloud Server API.</h2>
+      <a href="https://github.com/briboles/gd-api-wrapper" class="btn">View on GitHub</a>
+      <a href="https://github.com/briboles/gd-api-wrapper/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/briboles/gd-api-wrapper/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/briboles/gd-api-wrapper">View on GitHub</a>
-
-          <h1 id="project_title">Gd-api-wrapper</h1>
-          <h2 id="project_tagline">Node JS module Wrapper for Godaddy&#39;s v1 Cloud Server API.</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/briboles/gd-api-wrapper/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/briboles/gd-api-wrapper/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <p>This project wraps the Godaddy Cloud Servers API in an easy to use object.</p>
+    <section class="main-content">
+      <p>This project wraps the Godaddy Cloud Servers API in an easy to use object.</p>
 
 <h2>
 <a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
@@ -44,36 +32,110 @@
 <p>Full API docs can be found at <a href="https://cloud.godaddy.com/docs">https://cloud.godaddy.com/docs</a>. As of writing this, the cloud server offering through Godaddy.com is in a limited beta.</p>
 
 <h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Usage</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<div class="highlight highlight-Javascript"><pre>
+<span class="pl-k">var</span> CloudAPI <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./gd-api-wrapper<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> config <span class="pl-k">=</span> {
+    api_key<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>API_KEY<span class="pl-pds">'</span></span>,
+    api_secret<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>API_SECRET<span class="pl-pds">'</span></span>
+};
+
+<span class="pl-k">var</span> gdapi <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">CloudAPI</span>(config);
+
+<span class="pl-c">// Get All servers</span>
+gdapi.servers.get({}, <span class="pl-k">function</span> (<span class="pl-smi">err</span>, <span class="pl-smi">data</span>) {
+    <span class="pl-k">if</span> (err) <span class="pl-k">throw</span> err;
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(data.<span class="pl-c1">body</span>);
+});
+
+<span class="pl-c">// Get Specific Server</span>
+gdapi.servers.get({ serverId<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>kne13mdn<span class="pl-pds">'</span></span>}, <span class="pl-k">function</span> (<span class="pl-smi">err</span>, <span class="pl-smi">data</span>) {
+    <span class="pl-k">if</span> (err) <span class="pl-k">throw</span> err;
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(data.<span class="pl-c1">body</span>);
+});
+
+<span class="pl-c">// ServerID can also be supplied as a string </span>
+gdapi.servers.get(<span class="pl-s"><span class="pl-pds">'</span>kne13mdn<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">err</span>, <span class="pl-smi">data</span>) {
+    <span class="pl-k">if</span> (err) <span class="pl-k">throw</span> err;
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(data.<span class="pl-c1">body</span>);
+});
+</pre></div>
 
 <h3>
-<a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<a id="available-functions" class="anchor" href="#available-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available Functions</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>The format of the API class follows the same format as the API endpoints themselves. These are the currently available properties.</p>
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<p>{ 
+  servers:{ 
+     get: [Function],
+     create: [Function],
+     stop: [Function],
+     start: [Function],
+     destroy: [Function],
+     console: [Function],
+     actions: [Function] 
+   },
+  images: { 
+     get: [Function],
+     create: [Function],
+     destroy: [Function],
+     actions: [Function] 
+  },
+  specs: {
+    get: [Function] 
+  },
+  keys: { 
+    get: [Function], 
+    create: [Function] 
+  },
+  limits: { 
+    get: [Function] 
+  },
+  usage: { 
+    get: [Function]
+  } 
+}</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p><strong>Server Examples</strong>
+Examples of server function usage:</p>
+
+<div class="highlight highlight-Javascript"><pre>
+<span class="pl-c">// Create a new server</span>
+gdapi.servers.create({
+    image<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>fedora-20<span class="pl-pds">'</span></span>, 
+    spec<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>tiny<span class="pl-pds">'</span></span>,
+    hostname<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>myServer<span class="pl-pds">'</span></span>,
+    username<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>myuser<span class="pl-pds">'</span></span>,
+    password<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>mypassword<span class="pl-pds">'</span></span>
+  }, 
+    <span class="pl-k">function</span> (<span class="pl-smi">err</span>, <span class="pl-smi">data</span>) {
+      <span class="pl-k">if</span> (err) <span class="pl-en">console</span><span class="pl-c1">.error</span>(err);
+      <span class="pl-en">console</span><span class="pl-c1">.log</span>(data.<span class="pl-c1">body</span>);
+});
+
+<span class="pl-c">// Get all actions performed on a serverId</span>
+gdapi.servers.actions({ serverId<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>idstring<span class="pl-pds">'</span></span> }, <span class="pl-k">function</span> (<span class="pl-smi">err</span>, <span class="pl-smi">data</span>) {
+  <span class="pl-k">if</span> (err) <span class="pl-en">console</span><span class="pl-c1">.error</span>(err);
+  <span class="pl-en">console</span><span class="pl-c1">.log</span>(data.<span class="pl-c1">body</span>);
+});
+</pre></div>
 
 <h3>
 <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="https://help.github.com/pages">https://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
+<p>Pull requests are welcome. Issues can be posted at <a href="https://github.com/briboles/gd-api-wrapper/issues">https://github.com/briboles/gd-api-wrapper/issues</a>.</p>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Gd-api-wrapper maintained by <a href="https://github.com/briboles">briboles</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/briboles/gd-api-wrapper">Gd-api-wrapper</a> is maintained by <a href="https://github.com/briboles">briboles</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
 
-    
+    </section>
 
+  
   </body>
 </html>
+
