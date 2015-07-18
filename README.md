@@ -55,10 +55,18 @@ The format of the API class follows the same format as the API endpoints themsel
      destroy: [Function],
      console: [Function],
      actions: [Function] 
-   },
+  },
   images: { 
      get: [Function],
      create: [Function],
+     destroy: [Function],
+     actions: [Function] 
+  },
+  addresses:{ 
+     get: [Function],
+     create: [Function],
+     attach: [Function],
+     detach: [Function],
      destroy: [Function],
      actions: [Function] 
   },
