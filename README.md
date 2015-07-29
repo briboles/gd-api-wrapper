@@ -42,6 +42,25 @@ gdapi.servers.get('kne13mdn', function (err, data) {
 
 ```
 
+### API Also Supports Promises
+
+```Javascript
+
+var CloudAPI = require('gd-api-wrapper');
+var config = {
+    api_key: 'API_KEY',
+    api_secret: 'API_SECRET'
+};
+
+var gdapi = new CloudAPI(config);
+
+// ServerID can also be supplied as a string 
+gdapi.servers.get('kne13mdn').then(function (data) {
+    console.log(data.body);
+});
+
+```
+
 ### Available Functions
 
 The format of the API class follows the same format as the API endpoints themselves. These are the currently available properties.
