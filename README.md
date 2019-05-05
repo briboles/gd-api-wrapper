@@ -1,3 +1,5 @@
+# DEPRECATED GoDaddy's Cloud Server product is no longer available.
+
 # Godaddy Cloud Servers API Wrapper
 This node module wraps Godaddy's v1 Cloud Server API.
 
